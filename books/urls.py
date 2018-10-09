@@ -11,4 +11,5 @@ urlpatterns = [
     path('logout_user/', views.logout_user, name='logout_user'),
     path('(?P<book_id>[0-9]+)/', views.detail, name='detail'),
     path('create_book/', views.create_book, name='create-book'),
+    path('(?P<book_id>[0-9]+)/book/', views.book, name='book'),
 ]

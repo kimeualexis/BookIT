@@ -10,6 +10,7 @@ class Book(models.Model):
     publisher = models.CharField(max_length=500)
     type = models.CharField(max_length=250)
     description = models.TextField(max_length=1000)
+    book = models.FileField(default=1)
     cover = models.FileField()
 
     def get_absolute_url(self):

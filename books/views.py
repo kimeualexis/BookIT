@@ -77,3 +77,9 @@ def logout_user(request):
     logout(request)
     form = UserForm(request.POST or None)
     return render(request, 'books/login.html', {'form': form})
+
+
+def book(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    return render(request, 'books/book.html', {'book': book})
+
