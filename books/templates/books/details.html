@@ -1,0 +1,34 @@
+{% extends 'books/base.html' %}
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+    <div class="row">
+
+        <!-- Left Book info -->
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="{% url 'books:detail' book.id %}">
+                        {% if book.cover %}
+                            <img src="{{ book.cover.url }}" class="img-responsive">
+                            {% else %}
+                            <h3>No image to display.</h3>
+                        {% endif %}
+                    </a>
+                <h2>{{ book.author }}</h2>
+                <h3>{{ book.title }}</h3>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Right Book Info -->
+    <div class="col-sm-8 col-md-9">
+        <h3 class="text-center text-primary">Synopsis</h3>
+        <hr>
+        <p class="text-center">{{ book.description }}</p>
+    </div>
+    </div>
+    </div>
+{% endblock %}
