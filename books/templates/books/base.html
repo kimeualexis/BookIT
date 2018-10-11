@@ -39,17 +39,9 @@
                 <li class="{% block books_active %} {% endblock %}"><a href="{% url 'books:index' %}">
                     <span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;&nbsp; Books</a></li>
 
-                <li class="{% block romance_active %} {% endblock %}"><a href="{% url 'books:index' %}">
-                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;&nbsp; Romance</a></li>
+                <li class="{% block romance_active %} {% endblock %}"><a href="{% url 'books:favorites' %}">
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;&nbsp; Favorites</a></li>
 
-                <li class="{% block horror_active %} {% endblock %}"><a href="{% url 'books:index' %}">
-                    <span class="glyphicon glyphicon-cd" aria-hidden="true"></span>&nbsp;&nbsp; Horror</a></li>
-
-                <li class="{% block crime_active %} {% endblock %}"><a href="{% url 'books:index' %}">
-                    <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>&nbsp;&nbsp; Crime</a></li>
-
-                <li class="{% block gospel_active %} {% endblock %}"><a href="{% url 'books:index' %}">
-                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;&nbsp; Gospel</a></li>
              </ul>
 
             <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'books:index' %}">

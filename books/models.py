@@ -12,6 +12,7 @@ class Book(models.Model):
     description = models.TextField(max_length=1000)
     book = models.FileField(default=1)
     cover = models.FileField()
+    is_favorite = models.BooleanField(default=False)
 
     def get_absolute_url(self):
         return reverse('books:detail', kwargs={'pk': self.pk})

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from . models import Book
 from . forms import BookForm, UserForm
 
@@ -82,4 +83,24 @@ def logout_user(request):
 def book(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     return render(request, 'books/book.html', {'book': book})
+
+
+def favorite(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    try:
+        if book.is_favorite:
+            book.is_favorite = False
+        else:
+            book.is_favorite = True
+        book.save()
+    except(KeyError, Book.DoesNotExist):
+        return JsonResponse({'success': False})
+    else:
+        return JsonResponse({'success': True})
+
+
+def favorites(request):
+    user = request.user
+    books = Book.objects.filter(is_favorite=True)
+    return render(request, 'books/favorites.html', {'books': books, 'user': user})
 

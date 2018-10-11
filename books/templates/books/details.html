@@ -1,4 +1,6 @@
 {% extends 'books/base.html' %}
+{% load staticfiles %}
+<link href="{% static 'books/css/main.css' %}" type="text/css" rel="stylesheet"/>
 {% block title %}{{ book.title }}{% endblock %}
 
 {% block body %}
@@ -30,7 +32,7 @@
                 <li role="presentation"><a href="{% url 'books:book' book.id %}">Book</a></li>
             </ul>
         <hr>
-        <p class="text-center">{{ book.description }}</p>
+        <p style="font-size: 22px;font-family: 'Droid Sans';">{{ book.description }}</p>
 
     </div>
     </div>
