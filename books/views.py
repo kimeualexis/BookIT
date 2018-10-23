@@ -4,12 +4,22 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from . models import Book
 from . forms import BookForm, UserForm
+from django.db.models import Q
 
 
 @login_required(login_url='books:login_user')
 def index(request):
     books = Book.objects.filter(user=request.user)
-    return render(request, 'books/index.html', {'books': books})
+
+    query = request.GET.get("q")
+    if query:
+        books = books.filter(
+            Q(title__icontains=query) |
+            Q(author__icontains=query)
+        ).distinct()
+        return render(request, 'books/index.html', {'books': books})
+    else:
+        return render(request, 'books/index.html', {'books': books})
 
 
 @login_required(login_url='books:login_user')
